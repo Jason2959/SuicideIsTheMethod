@@ -1,6 +1,7 @@
 html {
     overflow-x: hidden;
     font-size: 150%;
+    background: url("./Images/SpacePNGTREE.svg") center center cover no-repeat fixed;
 }
 
 body {
@@ -55,10 +56,10 @@ body {
     min-height: 100%;
 }
 
-.container-fluid {
+/* .container-fluid {
     background-image: url("./Images/SpacePNGTREE.svg");
     margin: -10;
-}
+} */
 
 button {
     font-size: 100%;
