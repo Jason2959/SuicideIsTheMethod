@@ -1,0 +1,155 @@
+<!DOCTYPE =html>
+<html>
+	<title>GPA Calculator</title>
+	<meta charset=" UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" type="image/x-icon" href="./Images/favicon.ico" />
+	<link rel="stylesheet" href="Stylation.css" />
+	<div class="container-fluid">
+		<head>
+			<title>GPA Calculator</title>
+			<body>
+				<div class="topnav">
+					<a href="index.html">About</a>
+					<a href="Calculator.php">Calculator</a>
+					<a class="active" href="CodeView.html">View Code</a>
+				</div>
+			</body>
+		</head>
+		<body>
+			<div class="CalcText">
+				<h1>View Our Code!</h1>
+				<h4>
+					<center>
+						<a
+							href="https://github.com/Jason2959/THEFLBA2024"
+							style="color: aqua"
+							>Our Entire Code</a
+						>
+					</center>
+				</h4>
+				<button class="accordion">Navigation Bar</button>
+				<div class="panel">
+					<pre><code>
+&lt;head&gt;
+<nobr style="color: crimson;">Declares that this section is for navagation</nobr>
+  &lt;div class=&quot;topnav&quot;&gt; 
+  <nobr style="color: crimson;">Links to each section of the page</nobr>
+    &lt;a href=&quot;index.html&quot;&gt;About&lt;/a&gt; 
+    &lt;a class=&quot;active&quot; href=&quot;Calculator.html&quot;&gt;Calculator&lt;/a&gt;
+    &lt;a href=&quot;CodeView.html&quot;&gt;View Code&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/head&gt;
+                    </code></pre>
+				</div>
+				<button class="accordion">Accordion Code</button>
+				<div class="panel">
+					<pre>
+                        <code>
+<nobr style="color: crimson;"> finds all the elements on the page that have a class name "accordion" and stores them in a variable. </nobr>
+var acc = document.getElementsByClassName(&quot;accordion&quot;);
+var i; 
+
+for (i = 0; i &lt; acc.length; i++) {
+  <nobr style="color: crimson;">Checks through all the accordions to see if they are being pressed.</nobr>
+  acc[i].addEventListener(&quot;click&quot;, function() { 
+  <nobr style="color: crimson;">marks the accordion as active</nobr>
+  this.classList.toggle(&quot;active&quot;);
+  var panel = this.nextElementSibling;
+  <nobr style="color: crimson;">Checks if the part after it is open or closed and reverses it</nobr>
+  if (panel.style.maxHeight) {
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + &quot;px&quot;;
+  } 
+  });
+}
+</code>
+					</pre>
+				</div>
+				<button class="accordion">How buttons are made</button>
+				<div class="panel">
+					<pre>
+                        <code>
+function RemakeFields(event) {
+
+    const nef_wrapper = document.createElement(&quot;div&quot;);
+    <nobr style="color: crimson;">Creates all the parts that will be used in the button.</nobr>
+    const NameLabel = document.createElement(&quot;label&quot;);
+    const NameInput = document.createElement(&quot;input&quot;);
+
+    const WeightLabel = document.createElement(&quot;Label&quot;);
+    const WeightInput = document.createElement(&quot;input&quot;);
+
+    const GradeLabel = document.createElement(&quot;label&quot;);
+    const GradeInput = document.createElement(&quot;input&quot;);
+
+    const btnAdd = document.createElement(&quot;button&quot;);
+    const btnDel = document.createElement(&quot;button&quot;);
+    <nobr style="color: crimson;">This will contain everything so it can be moved all at once.</nobr>
+    nef_wrapper.classList.add(&quot;input__w&quot;);
+    <nobr style="color: crimson;">Here we give the labels a usage and a text.</nobr>
+    NameLabel.htmlFor = &quot;Classname&quot;; 
+    NameLabel.innerText = &quot; Class Name: &quot;;
+
+    WeightLabel.htmlFor = &quot;ClassWeight&quot;;
+    WeightLabel.innerText = &quot; Class Weight: &quot;;
+
+    GradeLabel.htmlFor = &quot;FinalGrade&quot;;
+    GradeLabel.innerText = &quot; Final Grade: &quot;;
+    <nobr style="color: crimson;">Since numerous fields are being added we number them.</nobr>
+    const currentFieldCounter = fieldCounter;
+    <nobr style="color: crimson;">Now we give each input its own data</nobr>
+    NameInput.type = &quot;text&quot;;
+    NameInput.name = &quot;ClassName[]&quot;;
+    NameInput.id = &quot;ClassName&quot; + currentFieldCounter;
+    NameInput.setAttribute(&quot;required&quot;, &quot;&quot;);
+    NameInput.classList.add(&quot;input-field&quot;);
+
+    WeightInput.type = &quot;number&quot;;
+    WeightInput.name = &quot;ClassWeight[]&quot;;
+    WeightInput.id = &quot;ClassWeight&quot; + currentFieldCounter;
+    WeightInput.step = &quot;0.1&quot;;
+    WeightInput.max = &quot;5&quot;;
+    WeightInput.setAttribute(&quot;required&quot;, &quot;&quot;);
+    WeightInput.classList.add(&quot;input-field&quot;);
+
+    GradeInput.type = &quot;text&quot;;
+    GradeInput.name = &quot;FinalGrade[]&quot;;
+    GradeInput.id = &quot;FinalGrade&quot; + currentFieldCounter;
+    GradeInput.step = &quot;1&quot;;
+    GradeInput.max = &quot;110&quot;;
+    GradeInput.setAttribute(&quot;required&quot;, &quot;&quot;);
+    GradeInput.classList.add(&quot;input-field&quot;);
+    <nobr style="color: crimson;">Adds a delete button.</nobr>
+    btnDel.type = &quot;button&quot;; 
+    btnDel.classList.add(&quot;btn-del-input&quot;);
+    btnDel.innerText = &quot;-&quot;;
+    <nobr style="color: crimson;">Adds all the buttons and labels to the wrapper</nobr>
+    nef_wrapper.appendChild(NameLabel);
+    nef_wrapper.appendChild(NameInput);
+    nef_wrapper.appendChild(WeightLabel);
+    nef_wrapper.appendChild(WeightInput);
+    nef_wrapper.appendChild(GradeLabel);
+    nef_wrapper.appendChild(GradeInput);
+    nef_wrapper.appendChild(btnDel);
+    <nobr style="color: crimson;">Adds the wrapper to the main page</nobr>
+    myForm.appendChild(nef_wrapper);
+    <nobr style="color: crimson;">When the delete button is clicked it will remove the wrapper and everything inside it</nobr>
+    btnDel.addEventListener(&quot;click&quot;, removeEmailField); 
+    fieldCounter++;
+    function removeEmailField(el) {
+    const field = el.target.parentElement;
+    field.remove();
+    <nobr style="color: crimson;">Save the data to be loaded next time the page is used</nobr>
+    saveFormDataToCookie(); 
+}
+}
+</code>
+					</pre>
+				</div>
+			</div>
+			<script src="Code.js"></script>
+		</body>
+	</div>
+</html>
